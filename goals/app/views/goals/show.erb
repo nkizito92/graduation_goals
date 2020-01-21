@@ -1,4 +1,4 @@
-<%=current_user.username%> new goal: <strong><%=@goal.job%></strong>
+<%=User.find_by_id(@goal.user_id).username%> new goal: <strong><%=@goal.job%></strong>
 
 <div>
     
@@ -8,5 +8,8 @@
     <%=@goal.description%>
     </div>
     <a href="/goals/<%=@goal.id%>/edit">Edit Goal</a>
+     <%if current_user.id != @goal.user_id%>
+        <h3>You are not the owner of this post bruh!! 😑😑</h3>
+    <%end%>
     
 </div>

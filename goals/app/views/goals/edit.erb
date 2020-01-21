@@ -9,3 +9,8 @@ You are Editing: <strong><%=@goal.job%></strong>
         <input type="submit" value="Update">
 </fieldset>
 </form>
+
+<form action="/goals" method="POST"> 
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="delete" value="Delete Goal">
+</form>

@@ -1,3 +1,4 @@
+Rack::MethodOverride
 class GoalController < ApplicationController
 
     get "/goals" do 
@@ -37,24 +38,24 @@ class GoalController < ApplicationController
 
 #update 
     get '/goals/:id/edit' do 
-        # if current_user.id == goal.user_id run this below
-         @goal = Goal.find_by_id(params[:id])
-        # if current_user.id == goal.user_id 
-        erb :"/goals/edit"
-        # else 
-            # redirect "/goals/#{@goal.id}"
-        # end
+        @goal = Goal.find_by_id(params[:id])
+        if current_user.id == @goal.user_id
+            erb :"/goals/edit"
+        else 
+            redirect "/goals/#{@goal.id}"
+        end
     end
 
-    patch '/goals/:id' do 
-        @goal = Goal.find_by_id(params[:id])
-        @goal.update(job: params[:job], description: params[:description])
-        redirect "/goals/#{@goal.id}"
+    patch '/goals' do 
+       goal = Goal.find_by(user_id: current_user.id)
+        goal.update(job: params[:job], description: params[:description])
+        redirect "/goals/#{goal.id}"
     end 
 
 #delete 
-    delete '/goals/:id' do 
-        @goal.delete_all 
+    delete '/goals' do 
+        goal = Goal.find_by(user_id: current_user.id)
+        goal.delete_all
         redirect "/goals"
     end 
 
