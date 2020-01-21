@@ -14,14 +14,16 @@
 ActiveRecord::Schema.define(version: 2) do
 
   create_table "goals", force: :cascade do |t|
-    t.string "job"
-    t.string "description"
-    t.string "user_id"
+    t.string  "job"
+    t.string  "description"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "password"
     t.string "password_digest"
+    t.string "goals"
   end
 
 end

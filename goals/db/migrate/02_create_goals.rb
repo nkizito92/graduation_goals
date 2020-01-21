@@ -3,7 +3,7 @@ class CreateGoals < ActiveRecord::Migration
         create_table :goals do |t|
             t.string :job
             t.string :description
-            t.string :user_id
+            t.integer :user_id
         end
     end
 end
