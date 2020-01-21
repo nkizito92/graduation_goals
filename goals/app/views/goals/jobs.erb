@@ -1,0 +1,6 @@
+You are sign in and you are in jobs
+<%@goals.each do |goal|%>
+    <ul>
+        <li> <%=goal.job%> <a href="/goals/<%=goal.id%>">View Goal</a></li>
+    </ul>
+    <%end%>

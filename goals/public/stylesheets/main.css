@@ -29,6 +29,7 @@
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
   }
+  
 
   h1 {
     font-size: 36px;
@@ -53,6 +54,11 @@
 
   .main {
     overflow: hidden;
+  }
+  
+  input {
+    padding:10px 0;
+    max-width: 80%;
   }
 
   .content {
@@ -113,3 +119,5 @@
     line-height: 24px;
   }
 }
+/* My css stuff */
+

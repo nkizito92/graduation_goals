@@ -1,0 +1,11 @@
+You are Editing: <strong><%=@goal.job%></strong>
+
+<form action="/goals" method="POST">
+ <fieldset>
+        <legend>Create Goal:</legend>
+        <input type="hidden" name="_method" value="PATCH" id="hidden">
+        <input type="text" name="job" value="<%=@goal.job%>"><br>
+        <textarea type="textarea" name="description" placeholder="description of your goal" require ><%=@goal.description%></textarea><br><br>
+        <input type="submit" value="Update">
+</fieldset>
+</form>

@@ -1,11 +1,9 @@
 <%# Display two users and their goals %>
 <h2>You are in the indexs erb bruh!!!</h2>
 <div> 
-    <div>New to Graduate Goals?! <a href="/signup">Signup</a></div> 
-    <div>You have an Account?! <a href="/login">Login</a></div>
     <h3>  <%User.all.each do |acc|%></h3>
         <ul>
-            <li><%=acc.username%>'s his goals are something</li>
+            <li><%=acc.username%>'s his goals are something <%=acc.goals%></li>
         </ul>
         <%end%>
 

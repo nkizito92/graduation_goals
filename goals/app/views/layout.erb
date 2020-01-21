@@ -8,10 +8,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/main.css">
   </head>
   <body>
     <div class="wrapper">
+      <%if !logged_in?%>
+    <div class="sidebar">  
+        New to Graduate Goals?! <a href="/signup">Signup</a>
+         <a href="/login">Login</a>
+    </div>
+      <%else%>
+        <div class="sidebar"><a href="/logout">Logout</a> <%=current_user.username%>?</div>
+      <%end%>
         <%= yield %>
 
       <footer class="branding">
