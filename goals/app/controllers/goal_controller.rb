@@ -68,8 +68,8 @@ class GoalController < ApplicationController
         goal = Goal.find_by(id: params[:id])
         if logged_in? && current_user.id == goal.user_id
             goal.delete
-            redirect "/goals"
         end
+        redirect "/goals"
     end 
 
  
