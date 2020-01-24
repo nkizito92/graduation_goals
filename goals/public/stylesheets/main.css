@@ -13,21 +13,23 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: rgb(158, 158, 158);
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
-  .wrapper {
+  main {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
+    max-width: 760px;
+    padding: 0 20px; /* 18px / 800px */
     width: 85%;
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
   }
   
 
@@ -51,14 +53,103 @@
   p {
     margin-bottom: 18px;
   }
+/* My CSS */
+ form {
+   position: relative;
+   margin: 0 auto;
+   max-width: 80%;
+   text-align: center;
+ }
+ #alerts, #alerts2 {
+   position: relative;
+   top:0;
+   margin-bottom: 20px;
+   color: #015c01;
+   opacity: 0;
+   animation: fade 5s linear;
+ }
 
+ @keyframes fade {
+   0%{opacity: 1;}
+   90%{opacity: 1;}
+   100%{opacity: 0; }
+   
+ }
+ 
+ input {
+  border-radius: 5px;
+  text-indent: 10px;
+  padding: 4px 0;
+  width: 380px;
+  max-width: 60%;
+  margin-bottom: 2px;
+  border: 1px solid #969696;
+}
+
+  #deleteButton {
+    position: relative;
+    padding: 10px, 15px;
+    background-color: #ffff;
+    border:2px solid #fc0000;
+    text-indent: 0;
+    text-decoration: none;
+    color: #fc0000;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  #deleteButton:hover {
+    background-color: #fc0000;
+    border:2px solid #969696;
+    cursor: pointer;
+    color: #ffff;
+  }
+
+  #deleteButton:active {
+    background-color: #000000;
+    color: #ffff;
+    outline: none;
+  }
+
+  
+    #button, #button2 {
+      border-radius: 5px;
+      padding: 10px, 35px;
+      background-color: #ffff;
+      border:2px solid #009213;
+      text-decoration: none;
+      color: #009213;
+      text-indent: 0;
+      height: 30px;
+      outline: none;
+    }
+
+  #button2{
+    font-size: 10pt;
+    padding: 10px 35px
+  }
+  textarea {
+    border-radius: 5px;
+    text-indent: 10px;
+  }
+
+  #button:hover, #button2:hover{
+    background-color: #009213;
+    border:2px solid #969696;
+    cursor: pointer;
+    color: #ffff;
+    outline: none;
+  }
+
+  #button:active, #button2:active {
+    background-color: #000000;
+    color: #ffff;
+  }
+
+  /* End of my CSS */
   .main {
     overflow: hidden;
-  }
-  
-  input {
-    padding:10px 0;
-    max-width: 80%;
   }
 
   .content {
@@ -67,15 +158,62 @@
   }
 
   .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
-    float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+    position: relative;
+    background: #140264;
+    top:0;
+    text-align: center;
+    padding: 0.5% 0; /* 5px / 240px */
+    width: auto; /* 240px / 800px */
+  }
+  nav a {
+    text-decoration: none;
+    color: #ffff;
+    padding: 5px 10px;
   }
 
+  nav a:hover {
+    transition: 0.2s linear;
+    color:#000000;
+    text-decoration: underline;
+    background-color: #ffffff;
+  }
+
+  nav a:active {
+    transition: none;
+    background-color: #00ff2a;
+    color: #000000;
+    
+  }
+  #post {
+    margin: 0 auto;
+    width: 400px;
+  }
+  
+  #post ul li {
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  .log {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    margin-right: 120px;
+    text-decoration: none;
+  }
   .sidebar ul {
     font-size: 14px;
+  }
+
+  nav ul li{
+    font-size: 16px;
+    display: inline-block;
+    color: #51ff00;
+  }
+  nav ul li:nth-child(3){
+    position: absolute;
+    margin-right: 60px;
+    right: 0;
+    color: #51ff00;
   }
 
   .branding {
@@ -83,14 +221,19 @@
   }
 
   footer.branding {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    bottom: 0;
     border-top: 2px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
+    padding: 20px 0;
+    width: 100%;
+    background-color: rgb(34, 34, 34);
   }
 }
 
 @media screen and (max-width: 600px) {
-  .wrapper {
+  main {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -119,5 +262,4 @@
     line-height: 24px;
   }
 }
-/* My css stuff */
 

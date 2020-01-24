@@ -1,16 +1,16 @@
-You are Editing: <strong><%=@goal.job%></strong>
-
-<form action="/goals" method="POST">
+<h1>Editing: <%=@goal.job%></h1>
+<form action="/goals/<%=@goal.id%>" method="POST">
  <fieldset>
-        <legend>Create Goal:</legend>
+        <legend>Edit Goal:</legend>
         <input type="hidden" name="_method" value="PATCH" id="hidden">
         <input type="text" name="job" value="<%=@goal.job%>"><br>
-        <textarea type="textarea" name="description" placeholder="description of your goal" require ><%=@goal.description%></textarea><br><br>
-        <input type="submit" value="Update">
-</fieldset>
+        <textarea type="textarea" rows="6" cols="50" name="description" placeholder="Description of your goal" require ><%=@goal.description%></textarea><br><br>
+        <input id="button" type="submit" value="Update"><br>
+        
 </form>
 
-<form action="/goals" method="POST"> 
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" name="delete" value="Delete Goal">
-</form>
+    <form action="/goals/<%=@goal.id%>" method="POST"> 
+        <input type="hidden" name="_method" value="DELETE">
+        <input id="deleteButton" type="submit" name="delete" value="Delete Goal">
+    </form>
+</fieldset>

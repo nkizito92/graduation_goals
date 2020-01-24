@@ -1,10 +1,18 @@
-<%# Display two users and their goals %>
-<h2>You are in the indexs erb bruh!!!</h2>
+<h1>Welcome to Gradute's Goals</h1>
 <div> 
-    <h3>  <%User.all.each do |acc|%></h3>
-        <ul>
-            <li><%=acc.username%>'s his goals are something <%=acc.goals%></li>
-        </ul>
-        <%end%>
+    
+        <div id="post">
+      <%User.all.each do |acc|%>
+            <ul>
+                <li><strong><%=acc.username%>'s</strong> posted the goal.... 
+            <%if logged_in?%>
+                        <a href="/goals/<%=acc.goals[0][:id]%>"><strong><%=acc.goals[0][:job]%></strong></a>
+                </li>
+            </ul>
+            <%else%>
+                <span id="alerts2">login to view post</span> 
+            <%end%>
+       <%end%>
+        </div>
 
 </div>

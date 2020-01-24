@@ -1,6 +1,13 @@
-You are sign in and you are in jobs
-<%@goals.each do |goal|%>
-    <ul>
-        <li> <%=goal.job%> <a href="/goals/<%=goal.id%>">View Goal</a></li>
-    </ul>
+<h1>People's Goals</h1>
+        <div id="post">
+    <%@goals.each do |goal|%>
+        <%if !(User.find(goal.user_id).username).empty? %>
+            <ul>
+                <li> <strong><%=User.find(goal.user_id).username%>'s</strong> created 
+                <a href="/goals/<%=goal.id%>" title="Click Here"><%=goal.job%></a></li>
+            </ul>
+        <%end%>
     <%end%>
+        </div>
+
+    

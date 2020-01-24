@@ -1,7 +1,12 @@
 class UserController < ApplicationController
+    
 
     get "/" do
-        erb :index
+        if logged_in? 
+            redirect "/goals"
+        else 
+            erb :index
+        end 
     end
     
     get '/login' do 
@@ -13,7 +18,7 @@ class UserController < ApplicationController
     end 
 
     post "/login" do 
-        @user = User.find_by(username: params[:username])
+        @user = User.find_by(username: params[:username].downcase)
         if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id
 			redirect to "/goals"
@@ -31,25 +36,25 @@ class UserController < ApplicationController
     end
 
     post "/signup" do 
-        @new_user = User.create(username: params[:username], password: params[:password])
-        if !params[:username].empty? && !params[:password].empty? 
+        @new_user = User.new(username: params[:username].downcase, password: params[:password])
+        @duplicate = ""
+        @old_user = User.all.find_by(username: params[:username])
+        @old_user == nil ? @duplicate = "" : @duplicate = @old_user.username 
+        # checking empty username/password and if username is taken already
+        # &&
+        if !params[:username].empty? && !params[:password].empty? && !@old_user
+            @new_user.save
             session[:user_id] = @new_user.id
             redirect "/goals"
         else 
-         redirect "/signup"
+            redirect "/signup"
         end
     end 
 
-
-
     get '/logout' do 
+        @logout = "goo"
         session.clear
         redirect "/login"
     end
-
-    get '/users/:id' do 
-        @user = User.find_by(params[:id])
-        erb :"/users/show/#{@user.id}"
-    end 
 
 end 

@@ -1,4 +1,3 @@
-Rack::MethodOverride
 class GoalController < ApplicationController
 
     get "/goals" do 
@@ -20,11 +19,10 @@ class GoalController < ApplicationController
     end 
 
     post "/goals" do 
-        @goal = Goal.new(job: params[:job], description: params[:description])
+        @goal = Goal.new(job: params[:job], description: params[:description], user_id: current_user.id)
         if @goal.job.empty?
             redirect "/goals/new"
         else 
-            @goal.user_id = current_user.id
             @goal.save
             redirect "/goals/#{@goal.id}"
         end 
@@ -32,31 +30,46 @@ class GoalController < ApplicationController
 #read
 # find the users id
     get "/goals/:id" do 
-        @goal =  Goal.find_by_id(params[:id])
-        erb :"/goals/show"
+        if logged_in?
+            @goal =  Goal.find_by_id(params[:id])
+            erb :"/goals/show"
+        else 
+            redirect "/"
+        end 
     end 
 
 #update 
     get '/goals/:id/edit' do 
         @goal = Goal.find_by_id(params[:id])
-        if current_user.id == @goal.user_id
-            erb :"/goals/edit"
-        else 
-            redirect "/goals/#{@goal.id}"
+        if logged_in?
+            if current_user.id == @goal.user_id
+                erb :"/goals/edit"
+            else 
+                redirect "/goals/#{@goal.id}"
+            end
+        else  
+            redirect "/"
         end
     end
 
-    patch '/goals' do 
-       goal = Goal.find_by(user_id: current_user.id)
-        goal.update(job: params[:job], description: params[:description])
-        redirect "/goals/#{goal.id}"
+    patch '/goals/:id' do 
+       goal = Goal.find_by(id: params[:id])
+       if !params[:job].empty? && !params[:description].empty? && current_user.id == goal.user_id
+            goal.update(job: params[:job], description: params[:description])
+            redirect "/goals/#{goal.id}"
+       else  
+            redirect "/goals/#{goal.id}/edit"
+       end 
+
     end 
 
 #delete 
-    delete '/goals' do 
-        goal = Goal.find_by(user_id: current_user.id)
-        goal.delete_all
-        redirect "/goals"
+    delete '/goals/:id' do 
+        goal = Goal.find_by(id: params[:id])
+        if logged_in? && current_user.id == goal.user_id
+            goal.delete
+            redirect "/goals"
+        end
     end 
 
  

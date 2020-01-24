@@ -11,22 +11,33 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
   </head>
   <body>
-    <div class="wrapper">
-      <%if !logged_in?%>
-    <div class="sidebar">  
-        New to Graduate Goals?! <a href="/signup">Signup</a>
-         <a href="/login">Login</a>
-    </div>
+  <%if !logged_in?%>
+     <nav class="sidebar">
+      <ul> 
+        <li>New to Graduate Goals?! <a href="/signup">Signup</a></li> 
+        <li><a href="/login">Login</a></li> 
+      </ul>
+    </nav>
+  <%else%>
+      <nav class="sidebar">
+      <ul>
+        <li><a href="/goals"> Home</a> </li>
+        <li><a id="create" href="/goals/new">Create Goal</a> </li>
+         <li id="log"><a href="/logout">Logout</a> <%=current_user.username%>?</li>
+      </ul>
+      </nav>
+  <%end%>
+    <main>
+      <%if @logout%>
       <%else%>
-        <div class="sidebar"><a href="/logout">Logout</a> <%=current_user.username%>?</div>
+       <div id="alerts"><%=@logout%></div>
       <%end%>
-        <%= yield %>
+     <%= yield %>
+    </main>
 
-      <footer class="branding">
-        <small>&copy; 2020 <strong>Goals</strong></small>
-      </footer>
-    </div>
-
+        <footer class="branding">
+          <small>&copy; 2020 <strong>Goals</strong> by Kizito Njoku</small>
+        </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   </body>
 </html>

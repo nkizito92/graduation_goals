@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /mnt/c/Users/nkizi/dev/flatiron/labs/project/graduation_goals/goals/app/controllers/user_controller.rb @ line 40 self.POST /signup:
+
+    [1;34m35[0m:     [32mend[0m
+    [1;34m36[0m: 
+    [1;34m37[0m:     post [31m[1;31m"[0m[31m/signup[1;31m"[0m[31m[0m [32mdo[0m 
+    [1;34m38[0m:         @old_user = [1;34;4mUser[0m.all.map {|name| name.username}
+    [1;34m39[0m:         @new_user = [1;34;4mUser[0m.create([35musername[0m: params[[33m:username[0m], [35mpassword[0m: params[[33m:password[0m])
+ => [1;34m40[0m:         binding.pry
+    [1;34m41[0m:         [32mif[0m !params[[33m:username[0m].empty? && !params[[33m:password[0m].empty? && !matches?(@new_user.username)
+    [1;34m42[0m:             session[[33m:user_id[0m] = @new_user.id
+    [1;34m43[0m:             redirect [31m[1;31m"[0m[31m/goals[1;31m"[0m[31m[0m
+    [1;34m44[0m:         [32melse[0m 
+    [1;34m45[0m:          redirect [31m[1;31m"[0m[31m/signup[1;31m"[0m[31m[0m
+
