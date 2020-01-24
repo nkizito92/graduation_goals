@@ -1,10 +1,9 @@
-     <%if current_user.id != @goal.user_id%>
-            <div id="alerts">Can't edit this post!</div>
             <strong><%=User.find_by_id(@goal.user_id).username%>'s </strong>goal:
             <h1><%=@goal.job%></h1>
             <div><h3 >Description: </h3><%=@goal.description%></div><br>
+     <%if current_user.id != @goal.user_id%>
+            <div id="alerts">Can't edit this goal!</div>
     <%else%>
-                <a href="/goals/<%=@goal.id%>/edit" id="button2">Edit Goal</a>
-            
+            <a href="/goals/<%=@goal.id%>/edit" id="button2">Edit Goal</a>
      <%end%>
     

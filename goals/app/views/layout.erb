@@ -28,10 +28,6 @@
       </nav>
   <%end%>
     <main>
-      <%if @logout%>
-      <%else%>
-       <div id="alerts"><%=@logout%></div>
-      <%end%>
      <%= yield %>
     </main>
 

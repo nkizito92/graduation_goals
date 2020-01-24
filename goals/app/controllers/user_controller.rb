@@ -37,11 +37,7 @@ class UserController < ApplicationController
 
     post "/signup" do 
         @new_user = User.new(username: params[:username].downcase, password: params[:password])
-        @duplicate = ""
         @old_user = User.all.find_by(username: params[:username])
-        @old_user == nil ? @duplicate = "" : @duplicate = @old_user.username 
-        # checking empty username/password and if username is taken already
-        # &&
         if !params[:username].empty? && !params[:password].empty? && !@old_user
             @new_user.save
             session[:user_id] = @new_user.id
@@ -52,7 +48,6 @@ class UserController < ApplicationController
     end 
 
     get '/logout' do 
-        @logout = "goo"
         session.clear
         redirect "/login"
     end
