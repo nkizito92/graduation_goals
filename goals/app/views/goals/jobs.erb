@@ -4,7 +4,7 @@
         <%if !(User.find(goal.user_id).username).empty? %>
             <ul>
                 <li> <strong><%=User.find(goal.user_id).username%>'s</strong> created 
-                <a href="/goals/<%=goal.id%>" title="Click Here"><%=goal.job%></a></li>
+                <a id="goals-link" href="/goals/<%=goal.id%>" title="Click Here"><%=goal.job%></a></li>
             </ul>
         <%end%>
     <%end%>

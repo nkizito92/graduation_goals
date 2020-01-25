@@ -32,7 +32,10 @@
     height: 100%;
   }
   
-
+#goals-link {
+  text-decoration: none;
+  color: #006280;
+}
   h1 {
     font-size: 36px;
     line-height: 54px;
