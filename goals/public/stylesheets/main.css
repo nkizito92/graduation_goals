@@ -36,6 +36,15 @@
   text-decoration: none;
   color: #006280;
 }
+
+#goals-link:hover {
+  text-decoration: underline;
+}
+
+#goals-link:active {
+  color: #005000;
+}
+
   h1 {
     font-size: 36px;
     line-height: 54px;
