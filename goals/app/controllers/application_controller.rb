@@ -15,6 +15,14 @@ class ApplicationController < Sinatra::Base
     def current_user 
       User.find(session[:user_id])
     end
+
+    def check_login_redirect(user, direction)
+      if logged_in?
+        erb :"#{user}"
+      else 
+        redirect "#{direction}"
+      end
+    end 
   end
 
 end
