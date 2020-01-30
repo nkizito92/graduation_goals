@@ -2,19 +2,13 @@ class UserController < ApplicationController
     
 
     get "/" do
-        if logged_in? 
-            redirect "/goals"
-        else 
-            erb :index
-        end 
+        redirect_if_login
+        erb :index
     end
     
     get '/login' do 
-        if logged_in? 
-            redirect "/goals"
-        else 
-            erb :"/users/login"
-        end 
+        redirect_if_login 
+        erb :"/users/login"
     end 
 
     post "/login" do 
@@ -28,17 +22,15 @@ class UserController < ApplicationController
     end
     # create*** new account
     get "/signup" do 
-        if logged_in? 
-            redirect "/goals"
-        else 
-            erb :"/users/signup"
-        end
+        redirect_if_login
+        erb :"/users/signup"
     end
 
     post "/signup" do 
-        @new_user = User.new(username: params[:username].downcase, password: params[:password])
+        @new_user = User.new(params)
         @old_user = User.all.find_by(username: params[:username])
-        if !params[:username].empty? && !params[:password].empty? && !@old_user
+        if @new_user.valid? && !@old_user
+            @new_user.username = params[:username].downcase
             @new_user.save
             session[:user_id] = @new_user.id
             redirect "/goals"
