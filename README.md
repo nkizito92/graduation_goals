@@ -37,7 +37,7 @@ Listening on localhost:9292, CTRL+C to stop
 
 ```
 You need to copy `localhost:9292` and paste it into your browser. 
-### Hurry you did!!!
+### You did it!!!
 
 
 ## Development
