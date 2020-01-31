@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def matching_ids
+    def matching_ids?
       current_user.id == @goal.user_id
     end 
     

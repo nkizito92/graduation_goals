@@ -3,8 +3,8 @@
  <fieldset>
         <legend>Edit Goal:</legend>
         <input type="hidden" name="_method" value="PATCH" id="hidden">
-        <input type="text" name="job" value="<%=@goal.job%>"><br>
-        <textarea type="textarea" rows="6" cols="50" name="description" placeholder="Description of your goal" require ><%=@goal.description%></textarea><br><br>
+        <input type="text" name="goal[job]" value="<%=@goal.job%>"><br>
+        <textarea type="textarea" rows="6" cols="50" name="goal[description]" placeholder="Description of your goal" require ><%=@goal.description%></textarea><br><br>
         <input id="button" type="submit" value="Update"><br>
         
 </form>

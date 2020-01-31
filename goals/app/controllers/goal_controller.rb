@@ -1,8 +1,8 @@
 class GoalController < ApplicationController
 
     get "/goals" do 
-        @goals = Goal.all
         check_login_redirect
+        @goals = Goal.all
         erb :"/goals/jobs"
     end 
 
@@ -13,11 +13,12 @@ class GoalController < ApplicationController
     end 
 
     post "/goals" do 
+        check_login_redirect
         @goal = Goal.new(params)
         if @goal.job.empty?
             redirect "/goals/new"
         else 
-            matching_ids
+            @goal.user_id = current_user.id 
             @goal.save
             redirect "/goals/#{@goal.id}"
         end 
@@ -25,30 +26,27 @@ class GoalController < ApplicationController
 #read
 # find the users id
     get "/goals/:id" do 
-        set_goal
         check_login_redirect
-        !params[:id] ? (redirect '/login') : (redirect '/goals')
+        set_goal
         erb :"/goals/show"
     end 
 
 #update 
     get '/goals/:id/edit' do 
+        check_login_redirect
         set_goal
-        if logged_in?
-                if matching_ids
-                    erb :"/goals/edit"
-                else 
-                    redirect "/goals/#{@goal.id}"
-                end
-        else  
-            redirect "/login"
+        if matching_ids?
+            erb :"/goals/edit"
+        else 
+            redirect "/goals/#{@goal.id}"
         end
     end
 
     patch '/goals/:id' do 
+        check_login_redirect
        set_goal
-       if @goal.valid? && matching_ids
-            @goal.update(job: params[:job], description: params[:description])
+       binding.pry
+       if  matching_ids? && @goal.update(params[:goal])
             redirect "/goals/#{@goal.id}"
        else  
             redirect "/goals/#{@goal.id}/edit"
@@ -58,8 +56,9 @@ class GoalController < ApplicationController
 
 #delete 
     delete '/goals/:id' do 
+        check_login_redirect
         set_goal
-        if logged_in? && matching_ids
+        if matching_ids?
             @goal.delete
         end
         redirect "/goals"
@@ -67,5 +66,8 @@ class GoalController < ApplicationController
     private 
         def set_goal
            @goal = Goal.find_by_id(params[:id])
+           if !@goal
+            redirect '/goals'
+           end 
         end 
 end 
