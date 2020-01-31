@@ -1,8 +1,6 @@
 # GraduationGoals
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/graduation_goals`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to GraduationGoals in here you can create an account. You can also create a new post and edit it as long as it's your own post. You can see other post from different users. Have fun and explore!!
 
 ## Installation
 
@@ -22,7 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To get started on your `terminal` run `rackup` or `shotgun`.
+If those commands do not work you may need to run `rake db:migrate` to build the database first. Once you have gotten the terminal to display. 
+```ruby
+
+D, [2020-01-30T21:06:46.099990 #32028] DEBUG -- :   ActiveRecord::SchemaMigration Load (0.2ms)  SELECT "schema_migrations".* FROM "schema_migrations"
+Thin web server (v1.7.2 codename Bachmanity)
+Maximum connections set to 1024
+Listening on localhost:9292, CTRL+C to stop
+
+
+```
+You need to copy `localhost:9292` and paste it into your browser. 
+### Hurry you did!!!
+
 
 ## Development
 
@@ -32,7 +43,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/graduation_goals. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/graduation_goals/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/nkizito92/graduation_goals. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/nkizito92/graduation_goals/blob/master/goals/CODE_OF_CONDUCT.md).
 
 
 ## License
@@ -41,4 +52,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the GraduationGoals project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/graduation_goals/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the GraduationGoals project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/nkizito92/graduation_goals/blob/master/goals/CODE_OF_CONDUCT.md).
