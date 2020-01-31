@@ -1,8 +1,8 @@
-require_relative 'lib/graduates_goals/version'
+require_relative 'lib/graduation_goals/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "graduates_goals"
-  spec.version       = GraduatesGoals::VERSION
+  spec.name          = "graduation_goals"
+  spec.version       = GraduationGoals::VERSION
   spec.authors       = ["nkizito92"]
   spec.email         = ["nkizito57@gmail.com"]
 
