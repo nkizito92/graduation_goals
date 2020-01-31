@@ -18,6 +18,11 @@ Or install it yourself as:
 
     $ gem install graduation_goals
 
+## Note  
+ If none of these commands work above try `forking` this repository and copy from clone or download.
+ type `git clone (paste what you have copied)` in your `terminal` and run `bundle install`
+
+
 ## Usage
 
 To get started on your `terminal` run `rackup` or `shotgun`.
