@@ -45,7 +45,6 @@ class GoalController < ApplicationController
     patch '/goals/:id' do 
         check_login_redirect
        set_goal
-       binding.pry
        if  matching_ids? && @goal.update(params[:goal])
             redirect "/goals/#{@goal.id}"
        else  
